@@ -70,7 +70,7 @@ export default function CfaPage() {
           </h1>
 
           <p className="mt-5 font-serif italic text-[18px] text-sauge leading-snug">
-            Pour les CFA et OF qui veulent placer leurs apprenti·es durablement.
+            Pour les CFA, OF d&apos;alternance et CCI qui veulent placer leurs apprenti·es durablement.
           </p>
 
           <div className="mt-6 mb-8 text-[16px] text-carbone leading-[1.7] text-left sm:text-center">
@@ -82,7 +82,7 @@ export default function CfaPage() {
 
         <section aria-labelledby="args-cfa-heading" className="max-w-[920px] mx-auto px-6 pb-16">
           <h2 id="args-cfa-heading" className="sr-only">
-            Pourquoi Click&apos;n Pop pour les CFA et OF
+            Pourquoi Click&apos;n Pop pour les CFA, OF et CCI
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7">
             {ARGUMENTS.map((arg) => (
@@ -103,15 +103,25 @@ export default function CfaPage() {
         >
           <div className="max-w-[560px] mx-auto">
             <h2 id="waitlist-cfa-heading" className="font-serif text-[22px] text-ink">
-              On prépare l&apos;app CFA / OF pour fin mai.
+              On prépare l&apos;app CFA / OF / CCI pour fin mai.
             </h2>
             <p className="mt-2 text-[14px] text-carbone leading-relaxed">
               Laissez votre email professionnel. On vous prévient au lancement.
             </p>
             <WaitlistForm
-              thirdFieldLabel="Nom du CFA ou OF"
-              thirdFieldPlaceholder="Nom de votre CFA ou organisme de formation"
-              thirdFieldName="raison_sociale"
+              thirdFieldLabel="Nom de votre structure"
+              thirdFieldPlaceholder="Nom de votre CFA, OF ou CCI"
+              thirdFieldName="nom_structure"
+              fourthSelect={{
+                name: "type_structure",
+                label: "Quel type de structure êtes-vous ?",
+                placeholder: "Choisir...",
+                options: [
+                  { label: "CFA classique", value: "CFA classique" },
+                  { label: "Organisme de formation alternance", value: "Organisme de formation alternance" },
+                  { label: "CCI / Chambre consulaire", value: "CCI / Chambre consulaire" },
+                ],
+              }}
             />
           </div>
         </section>
