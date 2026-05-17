@@ -1,42 +1,14 @@
 import Image from "next/image";
 import WaitlistForm from "@/components/WaitlistForm";
-import {
-  IconUsers,
-  IconChartBar,
-  IconFileText,
-  IconTrendingUp,
-} from "@/components/icons";
 
 export const dynamic = "force-static";
-
-const ARGUMENTS = [
-  {
-    icon: <IconUsers />,
-    title: "Tuteur-Screener : maître d'apprentissage validé",
-    body: "Vérification automatique R.6223-22 + capacité à transmettre. Plus de surprises J+30 sur la qualité du tutorat entreprise.",
-  },
-  {
-    icon: <IconChartBar />,
-    title: "Pilotage-CFA temps réel",
-    body: "Tableau de bord conformité Qualiopi, suivi parcours apprenti·es J+30 / J+90 / J+180, alertes en cas de signaux faibles.",
-  },
-  {
-    icon: <IconFileText />,
-    title: "Convention tripartite générée",
-    body: "Convention tripartite Cerfa et OPCO pré-remplie depuis le match. Gain de temps administratif et conformité garantie.",
-  },
-  {
-    icon: <IconTrendingUp />,
-    title: "Taux de rupture en baisse",
-    body: "Click'n Pop évalue la compatibilité mission × candidat avant le contrat. Résultat : moins de ruptures, plus de parcours qui tiennent jusqu'à l'examen.",
-  },
-];
 
 export default function CfaPage() {
   return (
     <>
+      {/* HEADER minimal — logo + retour apex uniquement (doctrine "chacun son univers") */}
       <header className="w-full bg-paper border-b border-trait">
-        <div className="max-w-[1080px] mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+        <div className="max-w-[1080px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
           <a href="https://clicknpop.fr" aria-label="Click'n Pop — accueil">
             <Image
               src="/assets/logo-clicknpop-officiel.png"
@@ -47,13 +19,7 @@ export default function CfaPage() {
               priority
             />
           </a>
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-[#5F5E5A]">
-            <a href="https://candidat.clicknpop.fr" className="hover:text-sauge-dark transition-colors">
-              Vous cherchez un job&nbsp;?
-            </a>
-            <a href="https://entreprise.clicknpop.fr" className="hover:text-sauge-dark transition-colors">
-              Vous recrutez&nbsp;?
-            </a>
+          <nav className="text-[13px] text-[#5F5E5A]">
             <a href="https://clicknpop.fr" className="hover:text-sauge-dark transition-colors">
               ← Retour Click&apos;n Pop
             </a>
@@ -61,79 +27,46 @@ export default function CfaPage() {
         </div>
       </header>
 
-      <main className="flex-1 bg-paper">
-        <section className="max-w-[680px] mx-auto px-8 pt-16 pb-12 text-center">
-          <h1 className="animate-pop-reveal font-serif text-[36px] sm:text-[44px] leading-[1.1] text-ink font-normal">
-            Le recrutement
-            <br />
-            qui fait pop.
+      <main className="flex-1 bg-paper flex items-center justify-center px-8 py-24 min-h-[70vh]">
+        <div className="w-full max-w-[480px] text-center">
+          <h1 className="animate-pop-reveal font-serif text-[28px] sm:text-[30px] text-ink font-normal leading-[1.3]">
+            L&apos;app CFA / OF / CCI arrive bientôt.
           </h1>
 
-          <p className="mt-5 font-serif italic text-[18px] text-sauge leading-snug">
-            Pour les CFA, OF d&apos;alternance et CCI qui veulent placer leurs apprenti·es durablement.
+          <p className="mt-4 mb-10 text-[15px] text-carbone leading-[1.7]">
+            Laissez votre email professionnel.
+            <br />
+            On vous prévient au lancement.
           </p>
 
-          <div className="mt-6 mb-8 text-[16px] text-carbone leading-[1.7] text-left sm:text-center">
-            <p>Un apprentissage se casse souvent à J+90.</p>
-            <p>Mauvais match candidat-entreprise, maître d&apos;apprentissage mal positionné, mission floue.</p>
-            <p className="mt-4">Click&apos;n Pop sourcier et place vos apprenti·es là où ça tient. Vraiment.</p>
-          </div>
-        </section>
+          <WaitlistForm
+            fourthSelect={{
+              name: "type_structure",
+              label: "Quel type de structure êtes-vous ?",
+              placeholder: "Choisir...",
+              options: [
+                { label: "CFA classique", value: "CFA classique" },
+                { label: "Organisme de formation alternance", value: "Organisme de formation alternance" },
+                { label: "CCI / Chambre consulaire", value: "CCI / Chambre consulaire" },
+              ],
+            }}
+            successMessage="Merci. On vous écrit dès que l'app CFA / OF / CCI ouvre."
+          />
 
-        <section aria-labelledby="args-cfa-heading" className="max-w-[920px] mx-auto px-6 pb-16">
-          <h2 id="args-cfa-heading" className="sr-only">
-            Pourquoi Click&apos;n Pop pour les CFA, OF et CCI
-          </h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7">
-            {ARGUMENTS.map((arg) => (
-              <li key={arg.title} className="flex gap-4">
-                <span className="shrink-0 mt-1">{arg.icon}</span>
-                <div>
-                  <h3 className="font-serif text-[17px] font-medium text-ink leading-snug">{arg.title}</h3>
-                  <p className="mt-2 text-[14px] text-carbone leading-relaxed">{arg.body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section
-          aria-labelledby="waitlist-cfa-heading"
-          className="bg-[rgba(107,132,103,0.06)] px-8 py-12"
-        >
-          <div className="max-w-[560px] mx-auto">
-            <h2 id="waitlist-cfa-heading" className="font-serif text-[22px] text-ink">
-              On prépare l&apos;app CFA / OF / CCI pour fin mai.
-            </h2>
-            <p className="mt-2 text-[14px] text-carbone leading-relaxed">
-              Laissez votre email professionnel. On vous prévient au lancement.
-            </p>
-            <WaitlistForm
-              thirdFieldLabel="Nom de votre structure"
-              thirdFieldPlaceholder="Nom de votre CFA, OF ou CCI"
-              thirdFieldName="nom_structure"
-              fourthSelect={{
-                name: "type_structure",
-                label: "Quel type de structure êtes-vous ?",
-                placeholder: "Choisir...",
-                options: [
-                  { label: "CFA classique", value: "CFA classique" },
-                  { label: "Organisme de formation alternance", value: "Organisme de formation alternance" },
-                  { label: "CCI / Chambre consulaire", value: "CCI / Chambre consulaire" },
-                ],
-              }}
-            />
-          </div>
-        </section>
+          <p className="mt-4 text-[12px]">
+            <a
+              href="https://clicknpop.fr"
+              className="text-sauge hover:text-sauge-dark transition-colors"
+            >
+              ← Retour à clicknpop.fr
+            </a>
+          </p>
+        </div>
       </main>
 
-      <footer className="bg-[rgba(107,132,103,0.04)] py-6 px-8 text-center">
-        <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[12px] text-[#888780]">
-          <a href="https://candidat.clicknpop.fr" className="hover:text-sauge-dark transition-colors">Candidat·e</a>
-          <span aria-hidden="true">·</span>
-          <a href="https://entreprise.clicknpop.fr" className="hover:text-sauge-dark transition-colors">Entreprise</a>
-          <span aria-hidden="true">·</span>
-          <a href="https://clicknpop.fr" className="hover:text-sauge-dark transition-colors">Retour à l&apos;accueil</a>
+      <footer className="py-5 px-8 text-center">
+        <nav className="flex items-center justify-center gap-x-3 text-[11px] text-[#888780]">
+          <a href="#" className="hover:text-sauge-dark transition-colors">Mentions légales</a>
           <span aria-hidden="true">·</span>
           <a href="#" className="hover:text-sauge-dark transition-colors">RGPD</a>
         </nav>
